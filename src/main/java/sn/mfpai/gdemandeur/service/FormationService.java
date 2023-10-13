@@ -3,6 +3,7 @@ package sn.mfpai.gdemandeur.service;
 import java.util.List;
 
 import sn.mfpai.gdemandeur.dto.FormationDTO;
+import sn.mfpai.gdemandeur.entities.Exam_Concours;
 import sn.mfpai.gdemandeur.entities.Formation;
 
 public interface FormationService {
@@ -21,8 +22,8 @@ public interface FormationService {
 	List<Formation> findByNomFormation(String nom);
 	List<Formation> findByNomFormationContains(String nom); 
 	List<Formation> findByNomDuree(String nom,String duree);
-	/*List<Formation> findByConcours (Concours concours);
-	List<Formation> findByConcoursIdConc(Long id);*/
+	List<Formation> findByExamConcours(Exam_Concours examConcours);
+	List<Formation> findByExamConcoursIdExConc(Long id);
 	List<Formation> findByOrderByNomFormationAsc();
 	List<Formation> trierFormationsNomsDuree();
 	

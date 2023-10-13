@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import sn.mfpai.gdemandeur.dto.FormationDTO;
+import sn.mfpai.gdemandeur.entities.Exam_Concours;
 import sn.mfpai.gdemandeur.entities.Formation;
 import sn.mfpai.gdemandeur.repos.FormationRepository;
 
@@ -99,6 +100,17 @@ public class FormationServiceImpl implements FormationService {
 		formation.setDiplomeRequis(formationDTO.getDiplomeRequis());
 		
 			return formation;
+	}
+
+	@Override
+	public List<Formation> findByExamConcours(Exam_Concours examConcours) {
+		return formationRepository.findByExamConcours(examConcours);
+		 
+	}
+
+	@Override
+	public List<Formation> findByExamConcoursIdExConc(Long id) {
+		return formationRepository.findByExamConcoursIdExConc(id);
 	}
 
 }

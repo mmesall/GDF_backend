@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,14 +24,21 @@ public class Formation {
 	private String admission;
 	private String diplomeRequis;
 	
-	public Formation(String nomFormation, String typeFormation, String duree, String admission, String diplomeRequis) {
+	@ManyToOne
+	private Exam_Concours examConcours;
+
+	public Formation(String nomFormation, String typeFormation, String duree, String admission, String diplomeRequis,
+			Exam_Concours examConcours) {
 		super();
 		this.nomFormation = nomFormation;
 		this.typeFormation = typeFormation;
 		this.duree = duree;
 		this.admission = admission;
 		this.diplomeRequis = diplomeRequis;
+		this.examConcours = examConcours;
 	}
+	
+	
 	
 	
 
