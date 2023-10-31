@@ -4,20 +4,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import sn.mfpai.gdemandeur.dto.FormationDTO;
 import sn.mfpai.gdemandeur.entities.Exam_Concours;
 import sn.mfpai.gdemandeur.entities.Formation;
+import sn.mfpai.gdemandeur.entities.PriseEnCharge;
 import sn.mfpai.gdemandeur.repos.FormationRepository;
 
-@Service
+
 public class FormationServiceImpl implements FormationService {
 
 	@Autowired
 	FormationRepository formationRepository;
 	
-	@Override
+	/*@Override
 	public FormationDTO saveFormation(FormationDTO f) {
 		return convertEntityToDto(formationRepository.save(convertDtoToEntity(f)));
 	}
@@ -25,12 +24,21 @@ public class FormationServiceImpl implements FormationService {
 	@Override
 	public FormationDTO updateFormation(FormationDTO f) {
 		return convertEntityToDto(formationRepository.save(convertDtoToEntity(f)));
+	}*/
+	
+	@Override
+	public Formation saveFormation(Formation f) {
+		return formationRepository.save(f);
+	}
+	
+	@Override
+	public Formation updateFormation(Formation f) {
+		return formationRepository.save(f);
 	}
 
 	@Override
 	public void deleteFormation(Formation f) {
 		formationRepository.delete(f);
-		
 	}
 
 	@Override
@@ -39,6 +47,15 @@ public class FormationServiceImpl implements FormationService {
 	}
 
 	@Override
+	public Formation getFormation(Long id) {
+		return formationRepository.findById(id).get();
+	}
+	
+	public List<Formation> getAllFormations(){
+		return formationRepository.findAll();
+	}
+	
+	/*@Override
 	public FormationDTO getFormation(Long id) {
 		return convertEntityToDto(formationRepository.findById(id).get());
 	}
@@ -48,7 +65,7 @@ public class FormationServiceImpl implements FormationService {
 		return formationRepository.findAll().stream()
 				.map(this::convertEntityToDto)
 				.collect(Collectors.toList());
-	}
+	}*/
 
 	@Override
 	public List<Formation> findByNomFormation(String nom) {
@@ -75,7 +92,7 @@ public class FormationServiceImpl implements FormationService {
 		return formationRepository.trierFormationsNomsDuree();
 	}
 
-	@Override
+	/*@Override
 	public FormationDTO convertEntityToDto(Formation f) {
 	
 		return FormationDTO.builder()
@@ -86,9 +103,9 @@ public class FormationServiceImpl implements FormationService {
 				.admission(f.getAdmission())
 				.diplomeRequis(f.getDiplomeRequis())
 				.build();
-	}
+	}*/
 
-	@Override
+	/*@Override
 	public Formation convertDtoToEntity(FormationDTO formationDTO) {
 		Formation formation = new Formation();
 		
@@ -100,7 +117,7 @@ public class FormationServiceImpl implements FormationService {
 		formation.setDiplomeRequis(formationDTO.getDiplomeRequis());
 		
 			return formation;
-	}
+	}*/
 
 	@Override
 	public List<Formation> findByExamConcours(Exam_Concours examConcours) {
@@ -112,5 +129,15 @@ public class FormationServiceImpl implements FormationService {
 	public List<Formation> findByExamConcoursIdExConc(Long id) {
 		return formationRepository.findByExamConcoursIdExConc(id);
 	}
+
+	/*@Override
+	public List<Formation> findByPriseEnCharge(PriseEnCharge pc) {
+		return formationRepository.findByPriseEnCharge(pc);
+	}
+
+	@Override
+	public List<Formation> findByPriseEnChargeIdPC(Long id) {
+		return formationRepository.findByPriseEnChargeIdPC(id);
+	}*/
 
 }

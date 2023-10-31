@@ -10,45 +10,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import sn.mfpai.gdemandeur.entities.Formation;
-import sn.mfpai.gdemandeur.service.FormationService;
+import sn.mfpai.gdemandeur.entities.Diplome;
+import sn.mfpai.gdemandeur.service.DiplomeService;
 
 @RestController
-@RequestMapping("/formations")
+@RequestMapping("/diplomes")
 @CrossOrigin
-public class FormationRESTController {
-
+public class DiplomeRESTController {
+	
 	@Autowired
-	FormationService formationService;
+	DiplomeService diplomeService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Formation> getAllFormations() {
-		return formationService.getAllFormations();
+	public List<Diplome> getAllDiplomes() {
+		return diplomeService.getAllDiplomes();
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Formation getFormationById(@PathVariable("id") Long id) {
-		return formationService.getFormation(id);
+	public Diplome getDiplomeById(@PathVariable("id") Long id) {
+		return diplomeService.getDiplome(id);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
-	public Formation createFormation(@RequestBody Formation formation) 
+	public Diplome createDiplome(@RequestBody Diplome d) 
 	{
-		return formationService.saveFormation(formation);
+		return diplomeService.createDiplome(d);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT)
-	public Formation updateFormation(@RequestBody Formation formation) 
+	public Diplome updateDiplome(@RequestBody Diplome d) 
 	{
-		return formationService.updateFormation(formation);
+		return diplomeService.updateDiplome(d);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void deleteFormation(@PathVariable("id") Long id)
+	public void deleteDiplome(@PathVariable("id") Long id)
 	{
-		formationService.deleteFormationById(id);
+		diplomeService.deleteDiplomeById(id);
 	}
-		
-	
-	
 }

@@ -14,7 +14,7 @@ import sn.mfpai.gdemandeur.entities.Exam_Concours;
 import sn.mfpai.gdemandeur.service.ExamConcoursService;
 
 @RestController
-@RequestMapping("/api/exc")
+@RequestMapping("/exam_Concourses")
 @CrossOrigin
 public class ExamConcoursRESTController {
 	

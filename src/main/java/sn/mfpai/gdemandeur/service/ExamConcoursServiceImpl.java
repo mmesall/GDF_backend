@@ -4,12 +4,10 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import sn.mfpai.gdemandeur.entities.Exam_Concours;
 import sn.mfpai.gdemandeur.repos.ExamConcoursRepository;
 
-@Service
+
 public class ExamConcoursServiceImpl implements ExamConcoursService {
 	
 	@Autowired
@@ -63,6 +61,11 @@ public class ExamConcoursServiceImpl implements ExamConcoursService {
 	@Override
 	public List<Exam_Concours> trierExamConcoursNomsDate() {
 		return examConcoursRepository.trierExamConcoursNomsDate();
+	}
+
+	@Override
+	public List<Exam_Concours> findByNomExConcoursContains(String nom) {
+		return examConcoursRepository.findByNomExConcoursContains(nom);
 	}
 
 }

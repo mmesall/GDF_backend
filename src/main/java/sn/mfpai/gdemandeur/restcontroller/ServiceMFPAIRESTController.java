@@ -10,45 +10,43 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import sn.mfpai.gdemandeur.entities.Formation;
-import sn.mfpai.gdemandeur.service.FormationService;
+import sn.mfpai.gdemandeur.entities.ServiceMFPAI;
+import sn.mfpai.gdemandeur.service.ServiceMFPAIService;
 
 @RestController
-@RequestMapping("/formations")
+@RequestMapping("/services")
 @CrossOrigin
-public class FormationRESTController {
-
+public class ServiceMFPAIRESTController {
+	
 	@Autowired
-	FormationService formationService;
+	ServiceMFPAIService serviceMFPAIService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Formation> getAllFormations() {
-		return formationService.getAllFormations();
+	public List<ServiceMFPAI> getAllServiceMFPAIs() {
+		return serviceMFPAIService.getAllServiceMFPAIs();
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Formation getFormationById(@PathVariable("id") Long id) {
-		return formationService.getFormation(id);
+	public ServiceMFPAI getServiceMFPAIById(@PathVariable("id") Long id) {
+		return serviceMFPAIService.getServiceMFPAI(id);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public Formation createFormation(@RequestBody Formation formation) 
+	public ServiceMFPAI createServiceMFPAI(@RequestBody ServiceMFPAI serv) 
 	{
-		return formationService.saveFormation(formation);
+		return serviceMFPAIService.createServiceMFPAI(serv);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT)
-	public Formation updateFormation(@RequestBody Formation formation) 
+	public ServiceMFPAI updateServiceMFPAI(@RequestBody ServiceMFPAI serv) 
 	{
-		return formationService.updateFormation(formation);
+		return serviceMFPAIService.updateServiceMFPAI(serv);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void deleteFormation(@PathVariable("id") Long id)
+	public void deleteServiceMFPAI(@PathVariable("id") Long id)
 	{
-		formationService.deleteFormationById(id);
+		serviceMFPAIService.deleteServiceMFPAIById(id);
 	}
-		
-	
-	
+
 }

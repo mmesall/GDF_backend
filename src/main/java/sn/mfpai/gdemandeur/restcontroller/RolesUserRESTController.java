@@ -10,45 +10,45 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import sn.mfpai.gdemandeur.entities.Formation;
-import sn.mfpai.gdemandeur.service.FormationService;
+import sn.mfpai.gdemandeur.entities.RolesUser;
+import sn.mfpai.gdemandeur.service.RolesUserService;
+
 
 @RestController
-@RequestMapping("/formations")
+@RequestMapping("/rolesUsers")
 @CrossOrigin
-public class FormationRESTController {
-
+public class RolesUserRESTController {
+	
 	@Autowired
-	FormationService formationService;
+	RolesUserService rolesUserService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Formation> getAllFormations() {
-		return formationService.getAllFormations();
+	public List<RolesUser> getAllRolesUsers() {
+		return rolesUserService.getAllRolesUsers();
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Formation getFormationById(@PathVariable("id") Long id) {
-		return formationService.getFormation(id);
+	public RolesUser getRolesUserById(@PathVariable("id") Long id) {
+		return rolesUserService.getRolesUser(id);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public Formation createFormation(@RequestBody Formation formation) 
+	public RolesUser createRolesUser(@RequestBody RolesUser role) 
 	{
-		return formationService.saveFormation(formation);
+		return rolesUserService.createRolesUser(role);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT)
-	public Formation updateFormation(@RequestBody Formation formation) 
+	public RolesUser updateRolesUser(@RequestBody RolesUser role) 
 	{
-		return formationService.updateFormation(formation);
+		return rolesUserService.updateRolesUser(role);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void deleteFormation(@PathVariable("id") Long id)
+	public void deleteRolesUser(@PathVariable("id") Long id)
 	{
-		formationService.deleteFormationById(id);
+		rolesUserService.deleteRolesUserById(id);
 	}
-		
-	
-	
+
+
 }

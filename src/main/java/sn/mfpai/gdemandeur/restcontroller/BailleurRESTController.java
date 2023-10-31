@@ -10,45 +10,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import sn.mfpai.gdemandeur.entities.Formation;
-import sn.mfpai.gdemandeur.service.FormationService;
+import sn.mfpai.gdemandeur.entities.Bailleur;
+import sn.mfpai.gdemandeur.service.BailleurService;
 
 @RestController
-@RequestMapping("/formations")
+@RequestMapping("/bailleurs")
 @CrossOrigin
-public class FormationRESTController {
-
+public class BailleurRESTController {
+	
 	@Autowired
-	FormationService formationService;
+	BailleurService bailleurService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Formation> getAllFormations() {
-		return formationService.getAllFormations();
+	public List<Bailleur> getAllBailleurs(){
+		return bailleurService.getAllBailleurs();
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Formation getFormationById(@PathVariable("id") Long id) {
-		return formationService.getFormation(id);
+	public Bailleur getBailleurById(@PathVariable("id") Long id) {
+		return bailleurService.getBailleur(id);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public Formation createFormation(@RequestBody Formation formation) 
+	public Bailleur createBailleur(@RequestBody Bailleur b) 
 	{
-		return formationService.saveFormation(formation);
+		return bailleurService.createBailleur(b);
 	}
-	
+
 	@RequestMapping(method = RequestMethod.PUT)
-	public Formation updateFormation(@RequestBody Formation formation) 
+	public Bailleur updateBailleur(@RequestBody Bailleur b) 
 	{
-		return formationService.updateFormation(formation);
+		return bailleurService.updateBailleur(b);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void deleteFormation(@PathVariable("id") Long id)
+	public void deleteBailleur(@PathVariable("id") Long id)
 	{
-		formationService.deleteFormationById(id);
+		bailleurService.deleteBailleurById(id);
 	}
-		
-	
-	
 }

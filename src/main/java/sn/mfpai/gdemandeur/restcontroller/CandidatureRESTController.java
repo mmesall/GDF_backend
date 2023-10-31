@@ -10,45 +10,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import sn.mfpai.gdemandeur.entities.Formation;
-import sn.mfpai.gdemandeur.service.FormationService;
+import sn.mfpai.gdemandeur.entities.Candidature;
+import sn.mfpai.gdemandeur.service.CandidatureService;
 
 @RestController
-@RequestMapping("/formations")
+@RequestMapping("/candidatures")
 @CrossOrigin
-public class FormationRESTController {
-
-	@Autowired
-	FormationService formationService;
+public class CandidatureRESTController {
 	
+	@Autowired
+	CandidatureService candidatureService;
+
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Formation> getAllFormations() {
-		return formationService.getAllFormations();
+	public List<Candidature> getAllCandidatures(){
+		return candidatureService.getAllCandidatures();
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Formation getFormationById(@PathVariable("id") Long id) {
-		return formationService.getFormation(id);
+	public Candidature getCandidatureById(@PathVariable("id") Long id) {
+		return candidatureService.getCandidature(id);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public Formation createFormation(@RequestBody Formation formation) 
+	public Candidature createCandidature(@RequestBody Candidature c) 
 	{
-		return formationService.saveFormation(formation);
+		return candidatureService.createCandidature(c);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT)
-	public Formation updateFormation(@RequestBody Formation formation) 
+	public Candidature updateCandidature(@RequestBody Candidature c) 
 	{
-		return formationService.updateFormation(formation);
+		return candidatureService.updateCandidature(c);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void deleteFormation(@PathVariable("id") Long id)
+	public void deleteCandidature(@PathVariable("id") Long id)
 	{
-		formationService.deleteFormationById(id);
+		candidatureService.deleteCandidatureById(id);
 	}
-		
-	
-	
 }

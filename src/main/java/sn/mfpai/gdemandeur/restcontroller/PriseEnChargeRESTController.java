@@ -10,45 +10,43 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import sn.mfpai.gdemandeur.entities.Formation;
-import sn.mfpai.gdemandeur.service.FormationService;
+import sn.mfpai.gdemandeur.entities.PriseEnCharge;
+import sn.mfpai.gdemandeur.service.PriseEnChargeService;
 
 @RestController
-@RequestMapping("/formations")
+@RequestMapping("/priseEnCharge")
 @CrossOrigin
-public class FormationRESTController {
-
+public class PriseEnChargeRESTController {
+	
 	@Autowired
-	FormationService formationService;
+	PriseEnChargeService priseEnChargeService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Formation> getAllFormations() {
-		return formationService.getAllFormations();
+	public List<PriseEnCharge> getAllPriseEnCharges() {
+		return priseEnChargeService.getAllPriseEnCharges();
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Formation getFormationById(@PathVariable("id") Long id) {
-		return formationService.getFormation(id);
+	public PriseEnCharge getPriseEnChargeById(@PathVariable("id") Long id) {
+		return priseEnChargeService.getPriseEnCharge(id);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public Formation createFormation(@RequestBody Formation formation) 
+	public PriseEnCharge createPriseEnCharge(@RequestBody PriseEnCharge pc) 
 	{
-		return formationService.saveFormation(formation);
+		return priseEnChargeService.savePriseEnCharge(pc);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT)
-	public Formation updateFormation(@RequestBody Formation formation) 
+	public PriseEnCharge updatePriseEnCharge(@RequestBody PriseEnCharge pc) 
 	{
-		return formationService.updateFormation(formation);
+		return priseEnChargeService.updatePriseEnCharge(pc);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void deleteFormation(@PathVariable("id") Long id)
+	public void deletePriseEnCharge(@PathVariable("id") Long id)
 	{
-		formationService.deleteFormationById(id);
+		priseEnChargeService.deletePriseEnChargeById(id);
 	}
-		
-	
-	
+
 }

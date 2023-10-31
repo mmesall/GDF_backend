@@ -10,45 +10,43 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import sn.mfpai.gdemandeur.entities.Formation;
-import sn.mfpai.gdemandeur.service.FormationService;
+import sn.mfpai.gdemandeur.entities.Utilisateur;
+import sn.mfpai.gdemandeur.service.UtilisateurService;
 
 @RestController
-@RequestMapping("/formations")
+@RequestMapping("/utilisateurs")
 @CrossOrigin
-public class FormationRESTController {
-
+public class UtilisateurRESTController {
+	
 	@Autowired
-	FormationService formationService;
+	UtilisateurService utilisateurService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Formation> getAllFormations() {
-		return formationService.getAllFormations();
+	public List<Utilisateur> getAllUtilisateurs() {
+		return utilisateurService.getAllUtilisateurs();
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Formation getFormationById(@PathVariable("id") Long id) {
-		return formationService.getFormation(id);
+	public Utilisateur getUtilisateurById(@PathVariable("id") Long id) {
+		return utilisateurService.getUtilisateur(id);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public Formation createFormation(@RequestBody Formation formation) 
+	public Utilisateur createUtilisateur(@RequestBody Utilisateur user) 
 	{
-		return formationService.saveFormation(formation);
+		return utilisateurService.createUtilisateur(user);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT)
-	public Formation updateFormation(@RequestBody Formation formation) 
+	public Utilisateur updateUtilisateur(@RequestBody Utilisateur user) 
 	{
-		return formationService.updateFormation(formation);
+		return utilisateurService.updateUtilisateur(user);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void deleteFormation(@PathVariable("id") Long id)
+	public void deleteUtilisateur(@PathVariable("id") Long id)
 	{
-		formationService.deleteFormationById(id);
+		utilisateurService.deleteUtilisateurById(id);
 	}
-		
-	
-	
+
 }

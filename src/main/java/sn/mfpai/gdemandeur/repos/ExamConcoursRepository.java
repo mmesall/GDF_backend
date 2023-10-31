@@ -6,9 +6,9 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-
 import sn.mfpai.gdemandeur.entities.Exam_Concours;
 
+//@RepositoryRestResource(path = "rest")
 public interface ExamConcoursRepository extends JpaRepository<Exam_Concours, Long> {
 
 	List<Exam_Concours> findByNomExConcours(String nom);

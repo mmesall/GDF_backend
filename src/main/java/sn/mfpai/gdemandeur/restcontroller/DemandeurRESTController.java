@@ -10,45 +10,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import sn.mfpai.gdemandeur.entities.Formation;
-import sn.mfpai.gdemandeur.service.FormationService;
+import sn.mfpai.gdemandeur.entities.Demandeur;
+import sn.mfpai.gdemandeur.service.DemandeurService;
 
 @RestController
-@RequestMapping("/formations")
+@RequestMapping("/demandeurs")
 @CrossOrigin
-public class FormationRESTController {
-
-	@Autowired
-	FormationService formationService;
+public class DemandeurRESTController {
 	
+	@Autowired
+	DemandeurService demandeurService;
+
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Formation> getAllFormations() {
-		return formationService.getAllFormations();
+	public List<Demandeur> getAllDemandeurs(){
+		return demandeurService.getAllDemandeurs();
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Formation getFormationById(@PathVariable("id") Long id) {
-		return formationService.getFormation(id);
+	public Demandeur getDemandeurById(@PathVariable("id") Long id) {
+		return demandeurService.getDemandeur(id);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public Formation createFormation(@RequestBody Formation formation) 
+	public Demandeur createDemandeur(@RequestBody Demandeur d) 
 	{
-		return formationService.saveFormation(formation);
+		return demandeurService.createDemandeur(d);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT)
-	public Formation updateFormation(@RequestBody Formation formation) 
+	public Demandeur updateDemandeur(@RequestBody Demandeur d) 
 	{
-		return formationService.updateFormation(formation);
+		return demandeurService.updateDemandeur(d);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void deleteFormation(@PathVariable("id") Long id)
+	public void deleteDemandeur(@PathVariable("id") Long id)
 	{
-		formationService.deleteFormationById(id);
+		demandeurService.deleteDemandeurById(id);
 	}
-		
-	
-	
 }

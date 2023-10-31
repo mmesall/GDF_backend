@@ -10,45 +10,44 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import sn.mfpai.gdemandeur.entities.Formation;
-import sn.mfpai.gdemandeur.service.FormationService;
+import sn.mfpai.gdemandeur.dto.FormationDTO;
+import sn.mfpai.gdemandeur.entities.Dossier;
+import sn.mfpai.gdemandeur.service.DossierService;
 
 @RestController
-@RequestMapping("/formations")
+@RequestMapping("/dossiers")
 @CrossOrigin
-public class FormationRESTController {
-
+public class DossierRESTController {
+	
 	@Autowired
-	FormationService formationService;
+	DossierService dossierService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Formation> getAllFormations() {
-		return formationService.getAllFormations();
+	public List<Dossier> getAllDossiers() {
+		return dossierService.getAllDossiers();
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Formation getFormationById(@PathVariable("id") Long id) {
-		return formationService.getFormation(id);
+	public Dossier getDossierById(@PathVariable("id") Long id) {
+		return dossierService.getDossier(id);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public Formation createFormation(@RequestBody Formation formation) 
+	public Dossier createDossier(@RequestBody Dossier doss) 
 	{
-		return formationService.saveFormation(formation);
+		return dossierService.createDossier(doss);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT)
-	public Formation updateFormation(@RequestBody Formation formation) 
+	public Dossier updateDossier(@RequestBody Dossier doss) 
 	{
-		return formationService.updateFormation(formation);
+		return dossierService.updateDossier(doss);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void deleteFormation(@PathVariable("id") Long id)
+	public void deleteDossier(@PathVariable("id") Long id)
 	{
-		formationService.deleteFormationById(id);
+		dossierService.deleteDossierById(id);
 	}
-		
-	
 	
 }

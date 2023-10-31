@@ -5,12 +5,11 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-
 import sn.mfpai.gdemandeur.entities.Exam_Concours;
 import sn.mfpai.gdemandeur.entities.Formation;
+import sn.mfpai.gdemandeur.entities.PriseEnCharge;
 
-@RepositoryRestResource(path = "rest")
+//@RepositoryRestResource(path = "rest")
 public interface FormationRepository extends JpaRepository<Formation, Long> {
 	
 	List<Formation> findByNomFormation(String nom);
@@ -33,4 +32,8 @@ public interface FormationRepository extends JpaRepository<Formation, Long> {
 	
 	List<Formation> findByExamConcoursIdExConc(Long id);
 	
+	@Query("select f from Formation f where f.pc = ?1 ")
+	List<Formation> findByPriseEnCharge(PriseEnCharge pc);
+	
+	/*List<Formation> findByPriseEnChargeIdPC(Long id);*/
 }

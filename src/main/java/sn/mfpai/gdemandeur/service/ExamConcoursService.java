@@ -21,6 +21,8 @@ public interface ExamConcoursService {
 	
 	List<Exam_Concours> findByNomExConcours(String nom);
 	
+	List<Exam_Concours> findByNomExConcoursContains(String nom);
+	
 	List<Exam_Concours> findByNomDate(String nom, Date date);
 
 	List<Exam_Concours> findByOrderByNomExConcoursAsc();

@@ -2,8 +2,10 @@ package sn.mfpai.gdemandeur;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@ComponentScan(basePackages = "sn.mfpai.gdemandeur.service")
 public class GdfApplication {
 
 	public static void main(String[] args) {

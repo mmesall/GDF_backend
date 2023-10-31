@@ -10,45 +10,43 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import sn.mfpai.gdemandeur.entities.Formation;
-import sn.mfpai.gdemandeur.service.FormationService;
+import sn.mfpai.gdemandeur.entities.Agent;
+import sn.mfpai.gdemandeur.service.AgentService;
+
 
 @RestController
-@RequestMapping("/formations")
+@RequestMapping("/agents")
 @CrossOrigin
-public class FormationRESTController {
-
+public class AgentRESTController {
+	
 	@Autowired
-	FormationService formationService;
+	AgentService agentService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Formation> getAllFormations() {
-		return formationService.getAllFormations();
+	public List<Agent> getAllAgents() {
+		return agentService.getAllAgents();
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Formation getFormationById(@PathVariable("id") Long id) {
-		return formationService.getFormation(id);
+	public Agent getAgentById(@PathVariable("id") Long id) {
+		return agentService.getAgent(id);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public Formation createFormation(@RequestBody Formation formation) 
+	public Agent createAgent(@RequestBody Agent agent) 
 	{
-		return formationService.saveFormation(formation);
+		return agentService.createAgent(agent);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT)
-	public Formation updateFormation(@RequestBody Formation formation) 
+	public Agent updateAgent(@RequestBody Agent agent) 
 	{
-		return formationService.updateFormation(formation);
+		return agentService.updateAgent(agent);
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void deleteFormation(@PathVariable("id") Long id)
+	public void deleteAgent(@PathVariable("id") Long id)
 	{
-		formationService.deleteFormationById(id);
+		agentService.deleteAgentById(id);
 	}
-		
-	
-	
 }

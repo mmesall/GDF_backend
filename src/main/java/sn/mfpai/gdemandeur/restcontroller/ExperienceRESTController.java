@@ -10,45 +10,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import sn.mfpai.gdemandeur.entities.Formation;
-import sn.mfpai.gdemandeur.service.FormationService;
+import sn.mfpai.gdemandeur.entities.Experience;
+import sn.mfpai.gdemandeur.service.ExperienceService;
 
 @RestController
-@RequestMapping("/formations")
+@RequestMapping("/experiences")
 @CrossOrigin
-public class FormationRESTController {
-
+public class ExperienceRESTController {
+	
 	@Autowired
-	FormationService formationService;
+	ExperienceService experienceService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public List<Formation> getAllFormations() {
-		return formationService.getAllFormations();
+	public List<Experience> getAllExperiences() {
+		return experienceService.getAllExperiences();
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public Formation getFormationById(@PathVariable("id") Long id) {
-		return formationService.getFormation(id);
+	public Experience getExperienceById(@PathVariable("id") Long id) {
+		return experienceService.getExperience(id);
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public Formation createFormation(@RequestBody Formation formation) 
+	public Experience createExperience(@RequestBody Experience exp) 
 	{
-		return formationService.saveFormation(formation);
+		return experienceService.createExperience(exp);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT)
-	public Formation updateFormation(@RequestBody Formation formation) 
+	public Experience updateExperience(@RequestBody Experience exp) 
 	{
-		return formationService.updateFormation(formation);
+		return experienceService.updateExperience(exp);
 	}
-	
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void deleteFormation(@PathVariable("id") Long id)
+	public void deleteExperience(@PathVariable("id") Long id)
 	{
-		formationService.deleteFormationById(id);
+		experienceService.deleteExperienceById(id);
 	}
-		
-	
-	
 }
